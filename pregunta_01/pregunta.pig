@@ -12,6 +12,7 @@ $ pig -x local -f pregunta.pig
 
         >>> Escriba su respuesta a partir de este punto <<<
 */
+
 -- carga de datos desde la carpeta local
 lines = LOAD 'data*.tsv' AS (line:CHARARRAY);
 
@@ -24,8 +25,7 @@ grouped = GROUP words BY word;
 -- genera una variable que cuenta las ocurrencias por cada grupo
 wordcount = FOREACH grouped GENERATE group, COUNT(words);
 
--- selecciona las primeras 15 palabras
-s = LIMIT wordcount 15;
+DUMP wordcount;
 
 -- escribe el archivo de salida en el sistema local
-STORE s INTO 'output';
+STORE wordcount INTO 'output' USING PigStorage (',');
