@@ -31,7 +31,7 @@ datos= LOAD 'data.csv' USING PigStorage(',')
             color,chararray,
             numero2:int
             );
-resultado= FOREACH datos GENERATE REGEX_EXTRACT(color, 'b(.*)',0) as f1;
+resultado= FOREACH datos GENERATE REGEX_EXTRACT(color, '^b(.*)',0) as f1;
 resultado2 = FILTER resultado BY  f1 is not null;
 
 STORE resultado2 INTO 'output' USING PigStorage(',') ;
