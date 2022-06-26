@@ -41,4 +41,4 @@ datos= LOAD 'data.csv' USING PigStorage(',')
             numoer2:int
             );
 resultado= FOREACH datos GENERATE nombre,apellido;
-STORE resultado INTO 'output3' USING PigStorage('@') ;
+STORE resultado INTO 'output' USING PigStorage('@') ;
