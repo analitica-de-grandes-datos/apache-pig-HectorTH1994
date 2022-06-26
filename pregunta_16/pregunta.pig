@@ -33,6 +33,6 @@ datos= LOAD 'data.csv' USING PigStorage(',')
 resultado= FOREACH datos GENERATE nombre as f0, REGEX_EXTRACT(nombre,  '^[K](.*)',0) as f1, color as f2;
 resultado2 = FILTER resultado BY  f1 is not null OR f2 == 'blue';
 resultado3= FOREACH resultado2 GENERATE f0,f2;
-STORE resultado2 INTO 'output' USING PigStorage(',') ;
+STORE resultado3 INTO 'output' USING PigStorage(',') ;
 
 
