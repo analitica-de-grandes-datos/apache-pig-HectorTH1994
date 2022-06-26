@@ -20,6 +20,7 @@ $ pig -x local -f pregunta.pig
 
         >>> Escriba su respuesta a partir de este punto <<<
 */
+
 datos= LOAD 'data.csv' USING PigStorage(',') 
         AS ( 
             numeros:int,
