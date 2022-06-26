@@ -31,6 +31,6 @@ datos= LOAD 'data.csv' USING PigStorage(',')
             numoer2:int
             );
 resultado= FOREACH datos GENERATE apellido AS F1,SIZE(apellido) AS F2;
-resultado2 = ORDER resultado BY F2 DESC;
+resultado2 = ORDER resultado BY F2 DESC, F1 ASC;
 resultado3 = LIMIT resultado2 5 ;
 STORE resultado3 INTO 'output' USING PigStorage(',') ;
