@@ -30,7 +30,7 @@ datos= LOAD 'data.csv' USING PigStorage(',')
             numero2:int
             );
 resultado= FOREACH datos GENERATE nombre as f0, color as f1;
-resultado2 = FILTER resultado BY  f1 != 'black'  OR f1 != 'blue';
-STORE resultado2 INTO 'output' USING PigStorage(',') ;
+resultado2 = FILTER resultado BY  f1 != 'black'  and f1 != 'blue';
+STORE resultado2 INTO 'output' USING PigStorage(',');
 
 
