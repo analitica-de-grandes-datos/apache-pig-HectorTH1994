@@ -21,3 +21,23 @@ $ pig -x local -f pregunta.pig
         >>> Escriba su respuesta a partir de este punto <<<
 */
 
+datos= LOAD 'data.csv' USING PigStorage(',') 
+        AS ( 
+            numeros:int,
+            nombre:chararray,
+            apellido:chararray,
+            fecha_nacimiento:chararray,
+            color,chararray,
+            numero2:int
+            );
+resultado= FOREACH datos GENERATE nombre as f2;
+
+--resultado2 = FILTER resultado BY  SUBSTRING(f2, 0,1) > 'm' or SUBSTRING(f2, 0,1) == 'm';
+
+resultado2 = FOREACH resultado GENERATE f2, SUBSTRING(f2, 0,1) as f3;
+
+resultado3 =  FILTER resultado2 BY (f3 MATCHES '.*[M-Z]');
+
+resultado4 = FOREACH resultado3 GENERATE f2;
+
+STORE resultado4 INTO 'output' USING PigStorage(',') ;
