@@ -30,6 +30,5 @@ datos= LOAD 'data.csv' USING PigStorage(',')
             );
 resultado= FOREACH datos GENERATE REGEX_EXTRACT(color,  '^[a-ac-z](.*)',0) as f1;
 resultado2 = FILTER resultado BY  f1 is not null;
-
-STORE resultado2 INTO 'output13' USING PigStorage(',') ;
+STORE resultado2 INTO 'output';
 
