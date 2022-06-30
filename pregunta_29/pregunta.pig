@@ -47,18 +47,18 @@ datos= LOAD 'data.csv' USING PigStorage(',')
 resultado= FOREACH datos GENERATE ToString(fecha_nacimiento, 'yyyy-MM-dd'),ToString(fecha_nacimiento, 'MMM'),ToString(fecha_nacimiento, 'MM,M');
 resultado2= FOREACH resultado GENERATE $0, (
 case $1
-    WHEN 'Apr' THEN 'Abr'
-    WHEN 'Jan' THEN 'Ene'
-    WHEN 'Dec' THEN 'Dic'
-    WHEN 'Feb' THEN 'Feb'
-    WHEN 'Mar' THEN 'Mar'
-    WHEN 'May' THEN 'May'
-    WHEN 'Jun' THEN 'Jun'
-    WHEN 'Jul' THEN 'Jul'
-    WHEN 'Aug' THEN 'Ago'
-    WHEN 'Sep' THEN 'Sep'
-    WHEN 'Oct' THEN 'Oct'
-    WHEN 'Nov' THEN 'Nov'
+    WHEN 'Apr' THEN 'abr'
+    WHEN 'Jan' THEN 'ene'
+    WHEN 'Dec' THEN 'dic'
+    WHEN 'Feb' THEN 'feb'
+    WHEN 'Mar' THEN 'mar'
+    WHEN 'May' THEN 'may'
+    WHEN 'Jun' THEN 'jun'
+    WHEN 'Jul' THEN 'jul'
+    WHEN 'Aug' THEN 'ago'
+    WHEN 'Sep' THEN 'sep'
+    WHEN 'Oct' THEN 'oct'
+    WHEN 'Nov' THEN 'nov'
     END
 ), $2;
 STORE resultado2 INTO 'output/' USING PigStorage(',');
