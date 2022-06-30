@@ -28,7 +28,7 @@ datos= LOAD 'data.csv' USING PigStorage(',')
             color,chararray,
             numero2:int
             );
-resultado= FOREACH datos GENERATE REGEX_EXTRACT(fecha_nacimiento,  '-(.*)-',1) as f2;
+resultado= FOREACH datos GENERATE INDEXOF(nombre,  'a',0) as f2;
 
 resultado2 = FILTER resultado BY  f2 is not null;
 
