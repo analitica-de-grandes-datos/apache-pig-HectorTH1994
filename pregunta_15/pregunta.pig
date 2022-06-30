@@ -31,5 +31,5 @@ datos= LOAD 'data.csv' USING PigStorage(',')
 resultado= FOREACH datos GENERATE REGEX_EXTRACT(nombre,  '^[Z](.*)',0) as f1, color as f2;
 resultado2 = FILTER resultado BY  f1 is not null and f2 == 'blue';
 
-STORE resultado2 INTO 'output2' USING PigStorage(' ') ;
+STORE resultado2 INTO 'output' USING PigStorage(' ') ;
 
