@@ -30,4 +30,4 @@ grouped = GROUP words BY word;
 -- genera una variable que cuenta las ocurrencias por cada grupo
 wordcount = FOREACH grouped GENERATE group, COUNT(words);
 
-STORE wordcount INTO 'output6' USING PigStorage(',') ;
+STORE wordcount INTO 'output/' USING PigStorage(',') ;
