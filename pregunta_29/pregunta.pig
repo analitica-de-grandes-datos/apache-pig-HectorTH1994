@@ -61,4 +61,4 @@ case $1
     WHEN 'Nov' THEN 'Nov'
     END
 ), $2;
-STORE resultado2 INTO 'output' USING PigStorage(',');
+STORE resultado2 INTO 'output/' USING PigStorage(',');
